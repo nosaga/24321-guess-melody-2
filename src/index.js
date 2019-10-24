@@ -15,6 +15,6 @@ const init = () => {
       />,
       document.querySelector(`#root`)
   );
-}
+};
 
 init();
