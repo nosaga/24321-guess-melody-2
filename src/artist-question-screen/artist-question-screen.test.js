@@ -1,13 +1,13 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import App from '../app/app';
+import ArtistQuestionScreen from '../artist-question-screen/artist-question-screen';
 
 it(`check if App renders correctly after relaunch`, ()=> {
   const tree = renderer
-    .create(<App
-      gameTime={5}
-      errorCount={3}
-      questions={[`songs`, `singers`]}
+    .create(<ArtistQuestionScreen
+      question={`answers`}
+      screenIndex={0}
+      onAnswer={function () {}}
     />)
     .toJSON();
   expect(tree).toMatchSnapshot();

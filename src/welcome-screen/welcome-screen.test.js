@@ -8,6 +8,7 @@ it(`WelcomeScreen renders correctly after relaunch`, () => {
     .create(<WelcomeScreen
       errorCount={3}
       time={5}
+      onChange={`test`}
     />)
     .toJSON();
 

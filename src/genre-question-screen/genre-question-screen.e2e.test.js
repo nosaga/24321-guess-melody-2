@@ -1,21 +1,20 @@
 import React from 'react';
 import Enzyme, {shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import WelcomeScreen from '../welcome-screen/welcome-screen';
+import GenreQuestionScreen from '../genre-question-screen/genre-question-screen';
+
 
 Enzyme.configure({adapter: new Adapter()});
 
-it(`Welcome screen button is clickable`, () => {
+it(`GenreQuestionScreen screen button is clickable`, () => {
   const clickHandler = jest.fn();
-  const app = shallow(<WelcomeScreen
-    errorCount={3}
-    time={5}
-    onStartButtonClick={clickHandler}
+  const app = shallow(<GenreQuestionScreen
+    question={``}
+    screenIndex={0}
+    onAnswer={clickHandler}
   />);
-
   const startButton = app.find(`button`);
-  startButton.simulate(`click`);
-
+  startButton.simulate(`onchange`);
   expect(clickHandler).toHaveBeenCalledTimes(1);
   app.update();
 });
