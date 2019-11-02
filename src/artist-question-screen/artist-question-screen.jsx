@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const ArtistQuestionScreen = ({question, screenIndex, onAnswer}) => {
   const {
-    answers,
+    answers
   } = question;
 
   return (
@@ -57,9 +57,9 @@ const ArtistQuestionScreen = ({question, screenIndex, onAnswer}) => {
 };
 
 ArtistQuestionScreen.propTypes = {
-  question: PropTypes.object.isRequired,
+  question: PropTypes.oneOf(`answers`).isRequired,
   screenIndex: PropTypes.object.isRequired,
-  onAnswer: PropTypes.func.isRequired,
+  onAnswer: PropTypes.func,
 };
 
 

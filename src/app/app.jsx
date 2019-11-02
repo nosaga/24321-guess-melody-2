@@ -1,4 +1,4 @@
-import React, {Component, PureComponent} from 'react';
+import React, {PureComponent} from 'react';
 import WelcomeScreen from '../welcome-screen/welcome-screen.jsx';
 import PropTypes from "prop-types";
 import GenreQuestionScreen from "../genre-question-screen/genre-question-screen.jsx";
@@ -7,7 +7,7 @@ import ArtistQuestionScreen from "../artist-question-screen/artist-question-scre
 
 class App extends PureComponent {
   static getScreen(question, props, onUserAnswer) {
-    if(question === -1) {
+    if (question === -1) {
       const {
         gameTime,
         errorCount
@@ -24,17 +24,17 @@ class App extends PureComponent {
     const currentQuestion = questions[question];
 
     switch (currentQuestion.type) {
-      case `genre`: return  <GenreQuestionScreen
+      case `genre`: return <GenreQuestionScreen
         question={questions[question]}
         screenIndex={currentQuestion}
         onAnswer={onUserAnswer}
-      />
+      />;
 
       case `artist`: return <ArtistQuestionScreen
         question={questions[question]}
         screenIndex={currentQuestion}
         onAnswer={onUserAnswer}
-      />
+      />;
     }
 
     return null;
@@ -50,25 +50,22 @@ class App extends PureComponent {
 
   render() {
     const {
-      gameTime,
-      errorCount,
       questions
     } = this.props;
     const {question} = this.state;
 
-    return App.getScreen(question, this.props,() => {
+    return App.getScreen(question, this.props, () => {
       this.setState((prevState) => {
         const nextIndex = prevState.question + 1;
         const isEnd = nextIndex >= questions.length;
 
         return {
-          ...prevState,
           question: !isEnd ? nextIndex : -1,
         };
-      })
-    })
+      });
+    });
   }
-};
+}
 
 App.propTypes = {
   gameTime: PropTypes.number.isRequired,
